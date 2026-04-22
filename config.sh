@@ -34,8 +34,8 @@ WAREHOUSE="/apps/hive/warehouse"
 
 # ========================= Hive / Beeline ====================================
 
-NTA_BEELINE_CMD="NTA_BEELINE"    # Source cluster beeline
-SHAHE_BEELINE_CMD="SHAHE_BEELINE"    # Destination cluster beeline
+NTA_BEELINE_CMD="/bin/NTA_BEELINE"    # Source cluster beeline
+SHAHE_BEELINE_CMD="/bin/SHAHE_BEELINE"    # Destination cluster beeline
 
 # ========================= Databases =========================================
 

@@ -30,6 +30,37 @@ init_log() {
     log "Log file: ${_LOG_FILE}"
 }
 
+# ========================= Python Environment ================================
+
+# Check if Python 3 is available and meets minimum version requirement.
+# Usage: check_python [min_version]
+check_python() {
+    local min_version="${1:-3.6}"
+    
+    if ! command -v python3 &>/dev/null; then
+        log_error "Python 3 is not installed or not in PATH"
+        log_error "Please install Python 3.${min_version#*.}+ to use Python tools"
+        return 1
+    fi
+    
+    local py_version
+    py_version=$(python3 --version 2>&1 | grep -oP '\d+\.\d+' | head -1)
+    
+    if [ -z "${py_version}" ]; then
+        log_warn "Could not detect Python version, proceeding anyway..."
+        return 0
+    fi
+    
+    # Simple version comparison (works for X.Y format)
+    if awk "BEGIN {exit !(${py_version} >= ${min_version})}"; then
+        log "Python ${py_version} detected (>= ${min_version} required)"
+        return 0
+    else
+        log_error "Python ${py_version} detected, but ${min_version}+ is required"
+        return 1
+    fi
+}
+
 # ========================= Lock File =========================================
 # Prevents overlapping runs of the same entry script.
 

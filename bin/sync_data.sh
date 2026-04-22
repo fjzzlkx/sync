@@ -9,7 +9,7 @@
 ###############################################################################
 set -euo pipefail
 
-BASE_DIR="$(cd "$(dirname "$0")" && pwd)"
+BASE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 
 # shellcheck source=config.sh
 source "${BASE_DIR}/config.sh"

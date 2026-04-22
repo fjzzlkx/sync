@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 lib/partition_utils.py — Generate MSCK REPAIR TABLE SQL for partition tables.
@@ -7,8 +7,8 @@ Scans HQL/DDL files for PARTITIONED BY and generates MSCK REPAIR statements.
 Skips known problematic tables.
 
 Usage:
-    python partition_utils.py <ddl_dir> [output_sql_file]
-    python partition_utils.py              # uses BASE_DIR/data/nta, writes to partition_sql/
+    python3 partition_utils.py <ddl_dir> [output_sql_file]
+    python3 partition_utils.py              # uses BASE_DIR/data/nta, writes to partition_sql/
 
 Output: SQL file with one "MSCK REPAIR TABLE db.table;" per partition table.
 """

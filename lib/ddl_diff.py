@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 lib/ddl_diff.py — Compare NTA and SHAHE DDLs to find modified tables.
@@ -8,8 +8,8 @@ transient metadata (transient_lastDdlTime, spark.sql.create.version),
 and outputs modified tables as "db table" lines to stdout.
 
 Usage:
-    python ddl_diff.py <nta_dir> <shahe_dir>
-    python ddl_diff.py                          # uses BASE_DIR/data/{nta,shahe}
+    python3 ddl_diff.py <nta_dir> <shahe_dir>
+    python3 ddl_diff.py                          # uses BASE_DIR/data/{nta,shahe}
 
 Exit codes:
     0 — completed (may output 0 or more modified tables)

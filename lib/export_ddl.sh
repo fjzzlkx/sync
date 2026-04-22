@@ -6,9 +6,6 @@
 # Requires: config.sh + lib/common.sh sourced first.
 ###############################################################################
 
-# Enable alias expansion so NTA_BEELINE / SHAHE_BEELINE work in non-interactive shells
-shopt -s expand_aliases 2>/dev/null || true
-
 # Export all table DDLs for a given cluster.
 # Usage: export_all_ddl <cluster>
 #   cluster = "nta" (source, uses NTA_BEELINE_CMD) or "shahe" (dest, uses SHAHE_BEELINE_CMD)

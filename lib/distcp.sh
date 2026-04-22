@@ -25,13 +25,14 @@ sync_database() {
 
         local distcp_log="${LOG_DIR}/distcp_${db}_$(date '+%Y%m%d_%H%M%S').log"
 
-        # Set Hadoop JVM options ONLY for distcp (not for beeline commands)
-        export HADOOP_CLIENT_OPTS="-Xms2048m -Xmx8192m"
-        export HADOOP_HEAPSIZE=8192
+        # Set Hadoop JVM options in a subshell to avoid polluting parent environment
+        (
+            export HADOOP_CLIENT_OPTS="-Xms2048m -Xmx8192m"
+            export HADOOP_HEAPSIZE=8192
 
-        # ------- Run distcp -------
-        hadoop distcp "${DISTCP_OPTS[@]}" "${src_path}" "${dst_path}" \
-            > "${distcp_log}" 2>&1
+            # ------- Run distcp -------
+            hadoop distcp "${DISTCP_OPTS[@]}" "${src_path}" "${dst_path}"
+        ) > "${distcp_log}" 2>&1
         local exit_code=$?
 
         # ------- Layer 1: Exit code -------

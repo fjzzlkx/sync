@@ -33,9 +33,6 @@ if [ "${BASH_SOURCE[0]}" = "$0" ]; then
     exit $?
 fi
 
-# Enable alias expansion so NTA_BEELINE / SHAHE_BEELINE work in non-interactive shells
-shopt -s expand_aliases 2>/dev/null || true
-
 # Sync a single table DDL from NTA → SHAHE with rollback safety.
 # Args: <src_db> <src_table> <dst_db> <dst_table>
 sync_single_table() {
